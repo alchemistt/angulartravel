@@ -1,0 +1,73 @@
+<!-- Additional varchar(255) borneBy varchar(255) endDate datetime expectedDuration varchar(255) locationCity varchar(255) passportNumber varchar(255) priority varchar(255) projectName varchar(255) travelApprover varchar(255) travelCity varchar(255) travelStart
+datetime type varchar(255) upperBound varchar(255) username -->
+<div class="row pt-5">
+    <div class="col-md-8 mx-auto">
+        <div class="card rounded-o">
+            <div class="card-header">
+                <h3 class="mb-0">New Entry</h3>
+            </div>
+            <div class="card-body">
+                <form class="form">
+
+                    <div class="form-group row">
+                        <label for="type" class="col-sm-3">Type</label>
+                        <input required type="text" name="type" id="" class="col-sm-8 form-control rounded-o" placeholder="type" [(ngModel)]="data.type" aria-describedby="helpId">
+                    </div>
+                    <div class="form-group row">
+                        <label for="Priority " class="col-sm-3">Priority </label>
+                        <input [(ngModel)]="data.priority " type="text" name="Priority " required id="" class="col-sm-8 form-control rounded-o" placeholder="" aria-describedby="helpId">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="travelCity " class="col-sm-3 ">travel City  </label>
+                        <input [(ngModel)]="data.travelCity " type="text " name="travelCity" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="locationCity " class="col-sm-3 ">locationCity </label>
+                        <input [(ngModel)]="data.locationCity " type="text " name="locationCity " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="travelStart " class="col-sm-3 ">travelStart </label>
+                        <input [(ngModel)]="data.travelStart " type="text " name="travelStart " required id=" " class="col-sm-8 form-control rounded-o " placeholder="YYYY-MM-DD " aria-describedby="helpId ">
+                    </div>
+
+                    <div class="form-group row ">
+                        <label for="endDate " class="col-sm-3 ">end Date </label>
+                        <input [(ngModel)]="data.endDate " type="endDate " name="endDate " required id=" " class="col-sm-8 form-control rounded-o " placeholder="YYYY-MM-DD " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="passportNumber " class="col-sm-3 ">passport Number </label>
+                        <input type="passportNumber " [(ngModel)]="data.passportNumber " name="passportNumber" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="projectName " class="col-sm-3 ">projectName  </label>
+                        <input type="projectName " [(ngModel)]="data.projectName " name="projectName" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="borneBy " class="col-sm-3 ">borne By  </label>
+                        <input type="borneBy " [(ngModel)]="data.borneBy " name="borneBy" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="travelApprover " class="col-sm-3 ">Approver  </label>
+                        <input type="travelApprover " [(ngModel)]="data.travelApprover " name="travelApprover" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="expectedDuration " class="col-sm-3 ">Duration  </label>
+                        <input type="expectedDuration " [(ngModel)]="data.expectedDuration " name="expectedDuration" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+
+                    <div class="form-group row ">
+                        <label for="upperBound " class="col-sm-3 ">UppercBound  </label>
+                        <input type="upperBound " [(ngModel)]="data.upperBound " name="upperBound" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+
+
+                    <button type="submit " (click)="create()" class="btn btn-primary col-md-8 float-center ">Submit</button>
+
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

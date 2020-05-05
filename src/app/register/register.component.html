@@ -1,0 +1,83 @@
+<div class="row pt-5">
+    <div class="col-md-8 mx-auto">
+        <div class="card rounded-o">
+            <div class="card-header">
+                <h3 class="mb-0">Register Dear Nagarian</h3>
+            </div>
+            <div class="card-body">
+                <form class="form">
+
+                    <div class="form-group row">
+                        <label for="firstname" class="col-sm-3">First Name</label>
+                        <input required type="text" name="fname" id="" class="col-sm-8 form-control rounded-o" placeholder="" [(ngModel)]="registerUserdata.fname" aria-describedby="helpId">
+                    </div>
+                    <div class="form-group row">
+                        <label for="lastname" class="col-sm-3">Last Name</label>
+                        <input [(ngModel)]="registerUserdata.lname" type="text" name="lname" required id="" class="col-sm-8 form-control rounded-o" placeholder="" aria-describedby="helpId">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="businessunit " class="col-sm-3 ">Business Unit </label>
+                        <input [(ngModel)]="registerUserdata.bu " type="text " name="bu" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="tittle " class="col-sm-3 ">Tittle </label>
+                        <input [(ngModel)]="registerUserdata.tittle " type="text " name="tittle " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="phone " class="col-sm-3 ">Phone </label>
+                        <input [(ngModel)]="registerUserdata.phone " type="text " name="phone " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+
+                    <div class="form-group row ">
+                        <label for="email " class="col-sm-3 ">E-mail </label>
+                        <input [(ngModel)]="registerUserdata.email " type="email " name="email " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="password " class="col-sm-3 ">Password </label>
+                        <input type="password " name="password" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    </div>
+                    <div class="form-group row ">
+                        <label for="address1>" class="col-sm-3">Address </label>
+                        <input [(ngModel)]="registerUserdata.address" type="text" name="address" required id="" class="col-sm-8 form-control rounded-o" placeholder="" aria-describedby="helpId">
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="city>" class="col-sm-3">City </label>
+                        <input [(ngModel)]="registerUserdata.city" type="text" name="city" required id="" class="col-sm-8 form-control rounded-o" placeholder="" aria-describedby="helpId">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3" for="state">State</label>
+
+                        <select [(ngModel)]="registerUserdata.state" class="col-sm-8" id=" state ">
+                          <option value="Delhi ">Delhi</option>
+                          <option value="Hayanaa ">Haryana</option>
+                          <option value="Punjab ">Punjab</option>
+                          <option value="Up">U.P.</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="zip>" class="col-sm-3">Zip </label>
+                        <input type=" number " name="zip " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId " [(ngModel)]="registerUserdata.zip">
+                    </div>
+                    <div class="form-group row ">
+                        <label class="col-sm-3 " for="Country ">Country</label>
+
+                        <select class="col-sm-8 " id=" Country ">
+                          <option value="India ">India</option>
+                          <option value="Russia ">Russia</option>
+                          <option value="U.S.A ">U.S.A</option>
+                          <option value="UK ">U.k.</option>
+                        </select> </div>
+
+
+                    <button (click)="registerUser() " type="submit " class="btn btn-primary col-md-8 float-center ">Submit</button>
+
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
