@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {  ReqComponent } from './req/req.component';
  import { NewComponent} from "./new/new.component";
  import { ViewComponent} from "./view/view.component"
+import { ForgetpassComponent } from './forgetpass/forgetpass.component';
+import { EditticketComponent } from './editticket/editticket.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,10 @@ const routes: Routes = [
     path:"dashboard",
     component: DashboardComponent
     },
+    {
+      path:"editticket",
+      component: EditticketComponent
+      },
   {
     path:"loginadmin",
     component: LoginadminComponent
@@ -45,6 +51,11 @@ const routes: Routes = [
   {
     path:"editregister",
     component: EditregisterComponent
+  
+  },
+  {
+    path:"forget",
+    component: ForgetpassComponent
   
   },
   {

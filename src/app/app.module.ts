@@ -17,6 +17,9 @@ import { EditregisterComponent } from './editregister/editregister.component';
 import { ReqComponent } from './req/req.component';
 import { NewComponent } from './new/new.component';
 import { ViewComponent } from './view/view.component';
+import { ForgetpassComponent } from './forgetpass/forgetpass.component';
+import { EditticketComponent } from './editticket/editticket.component';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +32,10 @@ import { ViewComponent } from './view/view.component';
     EditregisterComponent,
     ReqComponent,
     NewComponent,
-    ViewComponent
-  ],
+    ViewComponent,
+    ForgetpassComponent,
+    EditticketComponent
+  ],  
   imports: [
     BrowserModule,
     FormsModule,

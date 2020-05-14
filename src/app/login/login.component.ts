@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { importType } from '@angular/compiler/src/output/output_ast';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   constructor(private auth: AuthService, private router: Router) { }
   loginUserdata={
     email:"",
@@ -24,6 +25,13 @@ export class LoginComponent implements OnInit {
     this.auth.userLogin(this.loginUserdata)
     .subscribe(arg => this.validate(arg));
   
+  }
+  forget()
+  {
+    //alert("password reset if account exist");
+    this.router.navigate(['/forget']);  
+
+
   }
   
   
@@ -51,5 +59,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  imports: [
+   
 
+    FormsModule      //<----------make sure you have added this.
+  ]
 }

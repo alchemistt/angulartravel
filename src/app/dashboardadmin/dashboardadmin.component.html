@@ -10,8 +10,15 @@
                 <th> Travel Start Date</th>
                 <th>Travel End Date</th>
                 <th>Status</th>
+                <th>Comments</th>
+
+                <th>Date of submission</th>
+
                 <th>
                     <!-- <button class="btn btn-primary">Edit</button> -->
+                    Edit
+                </th>
+                <th>
                     Edit
                 </th>
             </tr>
@@ -24,15 +31,24 @@
             totalItems: totalRecords }">
                 <td>{{req.rid}}</td>
                 <td>{{req.type}}</td>
-                <td>{{req.priority}}</td>
+
+
+                <td *ngIf="req.priority==3">High</td>
+                <td *ngIf="req.priority==2">Medium</td>
+                <td *ngIf="req.priority==1">Low</td>
                 <td>{{req.travelCity}}</td>
                 <td>{{req.locationCity}}</td>
                 <td>{{req.travelStart| date :'long'}}</td>
                 <td>{{req.endDate | date : 'long'}} </td>
                 <td>{{req.additional}}</td>
+                <td>{{req.comments}}</td>
+                <td>{{req.submittedon|date}}</td>
+                <td>
+                    <button (click)="view(req.rid)" class="btn btn-success ">View</button>
+
+                </td>
                 <td>
                     <button (click)="edit(req.rid)" class="btn btn-primary">Edit</button>
-                    <button (click)="view(req.rid)" class="btn btn-success">Edit</button>
                 </td>
 
         </tbody>

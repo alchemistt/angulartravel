@@ -14,20 +14,30 @@ export class ReqComponent implements OnInit {
   rid= this.route.snapshot.paramMap.get('id');
   data={
     additional:"",
-    rid: this.rid
+    rid: this.rid,
+    comments:""
   }
   ngOnInit(): void {
    
     
   }
+  valuePriority(value){
+    alert(value)
+    this.data.additional=value;
+  }
   edit(){
-    console.log(this.data.additional) 
+    if(this.data.additional==""){
+      alert("Please select status")
+    }
+
+    else{    console.log(this.data.additional) 
     this.auth.editstatus(this.data)
      .subscribe(res=>{console.log(res)
       this.router.navigate(['/dashboardadmin']);
                       },
                 err=>console.log(err));
                     }
+                  }
 
   }
 

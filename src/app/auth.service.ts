@@ -15,7 +15,10 @@ export class AuthService {
   private updateurl ="http://localhost:8080/payment-resource/request/update"
   private new ="http://localhost:8080/payment-resource/request/add"
   private viewbyid ="http://localhost:8080/payment-resource/request/getByrid/"
-  
+  private forgetURL = ""
+  private listOfCountryURL="https://api.covid19api.com/countries"
+  private dataCountryURL="https://api.quarantine.country/api/v1/spots/month?region="
+ 
   constructor(private http: HttpClient) { }
   registerUserService(user)
   {
@@ -38,8 +41,11 @@ export class AuthService {
     return this.http.post<any>(this.userLoginURL,user)
   }
   userDashBoard(user):Observable<any>
-  { this.userDataDash=this.userDataDash+""+user
-    return this.http.get<any>(this.userDataDash,user)
+  { this.userDataDash=this.userDataDash
+    var data={
+    email:user
+    }
+    return this.http.post<any>(this.userDataDash,data)
   }
   editstatus(data)
 {
@@ -52,6 +58,25 @@ createNew(data){
 view(id):Observable<any>
 {this.viewbyid=this.viewbyid+""+id;
 return this.http.get<any>(this.viewbyid)
+}
+forget(data)
+{
+this.forgetURL = "http://localhost:8080/payment-resource/user/password/"
+//this.forgetURL=this.forgetURL+data.email
+console.log(this.forgetURL);
+return this.http.post<any>(this.forgetURL,data)
+
+}
+
+listCountryAPI():Observable<any>
+  {
+    return this.http.get<any>(this.listOfCountryURL)
+  }
+CountryData(country:String):Observable<any>
+{
+var dataCountryURL="https://api.quarantine.country/api/v1/spots/month?region="
+dataCountryURL=dataCountryURL+country;
+return this.http.get<any>(dataCountryURL)
 }
 
 }

@@ -11,57 +11,82 @@ datetime type varchar(255) upperBound varchar(255) username -->
 
                     <div class="form-group row">
                         <label for="type" class="col-sm-3">Type</label>
-                        <input required type="text" name="type" id="" class="col-sm-8 form-control rounded-o" placeholder="type" [(ngModel)]="data.type" aria-describedby="helpId">
+                        <select (change)="valueType($event.target.value)" class="col-sm-8 " id=" Country ">
+                            <option value="" selected disabled hidden>Choose here</option>
+                            <option value="Travel Tickets">Travel Tickets</option>
+                            <option value="Hotel Stay ">Hotel Stay</option>
+                            <option value="Visa ">Visa</option>
+                            <option value="Work permit">Work permit.</option>
+                            </select>
                     </div>
                     <div class="form-group row">
                         <label for="Priority " class="col-sm-3">Priority </label>
-                        <input [(ngModel)]="data.priority " type="text" name="Priority " required id="" class="col-sm-8 form-control rounded-o" placeholder="" aria-describedby="helpId">
+                        <select (change)="valuePriority($event.target.value)" class="col-sm-8 " id=" Country ">
+                            <option value="" selected disabled hidden>Priority</option>
+                            <option value="1">Low</option>
+                            <option value="2">Mid</option>
+                            <option value="3">High</option>
+                            
+                            </select>
                     </div>
                     <div class="form-group row ">
                         <label for="travelCity " class="col-sm-3 ">travel City  </label>
-                        <input [(ngModel)]="data.travelCity " type="text " name="travelCity" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
-                    </div>
+                        <select (change)="valueTravelCity($event.target.value)" class="col-sm-8 " id=" Country ">
+                            <option value="" selected disabled hidden>Travel City</option>
+                             <option *ngFor="let possibleCity of possibleCitys" [value]="possibleCity.value">{{possibleCity.title}}</option> 
+                            </select> </div>
                     <div class="form-group row ">
-                        <label for="locationCity " class="col-sm-3 ">locationCity </label>
-                        <input [(ngModel)]="data.locationCity " type="text " name="locationCity " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
-                    </div>
+                        <label for="locationCity " class="col-sm-3 ">Location City </label>
+                        <select (change)="valueLocationCity($event.target.value)" class="col-sm-8 " id=" Country ">
+                            <option value="" selected disabled hidden>location City</option>
+                            <option *ngFor="let possibleCity of possibleCitys" [value]="possibleCity.value">{{possibleCity.title}}</option> 
+                            </select> </div>
                     <div class="form-group row ">
-                        <label for="travelStart " class="col-sm-3 ">travelStart </label>
-                        <input [(ngModel)]="data.travelStart " type="text " name="travelStart " required id=" " class="col-sm-8 form-control rounded-o " placeholder="YYYY-MM-DD " aria-describedby="helpId ">
+                        <label for="Country" class="col-sm-3 ">Country</label>
+                        <select (change)=country($event.target.value) class="col-sm-8 " id=" Country ">
+                                    <option value="" selected disabled hidden>location Country</option>
+                                    <option *ngFor="let country of counrtyList" [value]="country.Slug">{{country.Country}}</option> 
+                                    </select></div>
+
+                    <div *ngIf="visibility" class="graph"><canvas id="myChart" width="100" height="100"></canvas></div>
+                    <div class="form-group row ">
+                        <label for="travelStart " class="col-sm-3 ">Travel Start </label>
+                        <input type="date" [(ngModel)]="data.travelStart " name="travelStart " required id=" " class="col-sm-8 form-control rounded-o " placeholder="YYYY-MM-DD " aria-describedby="helpId ">
                     </div>
 
                     <div class="form-group row ">
-                        <label for="endDate " class="col-sm-3 ">end Date </label>
-                        <input [(ngModel)]="data.endDate " type="endDate " name="endDate " required id=" " class="col-sm-8 form-control rounded-o " placeholder="YYYY-MM-DD " aria-describedby="helpId ">
+                        <label for="endDate " class="col-sm-3 ">End Date </label>
+                        <input [(ngModel)]="data.endDate " type="date" name="endDate " required id=" " class="col-sm-8 form-control rounded-o " placeholder="YYYY-MM-DD " aria-describedby="helpId ">
+                        <small id="emailHelp" class="form-text text-muted pl-5">Put Tentative if exact not known.</small>
                     </div>
                     <div class="form-group row ">
-                        <label for="passportNumber " class="col-sm-3 ">passport Number </label>
-                        <input type="passportNumber " [(ngModel)]="data.passportNumber " name="passportNumber" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <label for="passportNumber " class="col-sm-3 ">Passport Number </label>
+                        <input type="passportNumber " [(ngModel)]="data.passportNumber " name="passportNumber " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
                     <div class="form-group row ">
-                        <label for="projectName " class="col-sm-3 ">projectName  </label>
-                        <input type="projectName " [(ngModel)]="data.projectName " name="projectName" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <label for="projectName " class="col-sm-3 ">Project Name  </label>
+                        <input type="projectName " [(ngModel)]="data.projectName " name="projectName " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
                     <div class="form-group row ">
-                        <label for="borneBy " class="col-sm-3 ">borne By  </label>
-                        <input type="borneBy " [(ngModel)]="data.borneBy " name="borneBy" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <label for="borneBy " class="col-sm-3 ">Borne By  </label>
+                        <input type="borneBy " [(ngModel)]="data.borneBy " name="borneBy " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
                     <div class="form-group row ">
                         <label for="travelApprover " class="col-sm-3 ">Approver  </label>
-                        <input type="travelApprover " [(ngModel)]="data.travelApprover " name="travelApprover" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <input type="travelApprover " [(ngModel)]="data.travelApprover " name="travelApprover " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
                     <div class="form-group row ">
                         <label for="expectedDuration " class="col-sm-3 ">Duration  </label>
-                        <input type="expectedDuration " [(ngModel)]="data.expectedDuration " name="expectedDuration" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <input type="expectedDuration " [(ngModel)]="data.expectedDuration " name="expectedDuration " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
 
                     <div class="form-group row ">
-                        <label for="upperBound " class="col-sm-3 ">UppercBound  </label>
-                        <input type="upperBound " [(ngModel)]="data.upperBound " name="upperBound" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <label for="upperBound " class="col-sm-3 ">Upper Bound  </label>
+                        <input type="upperBound " [(ngModel)]="data.upperBound " name="upperBound " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
 
 
-                    <button type="submit " (click)="create()" class="btn btn-primary col-md-8 float-center ">Submit</button>
+                    <button type="submit " (click)="create() " class="btn btn-primary col-md-8 float-center ">Submit</button>
 
                 </form>
 

@@ -5,12 +5,14 @@
                 <h3 class="mb-0">Register Dear Nagarian</h3>
             </div>
             <div class="card-body">
-                <form class="form">
+                <form #registerForm="ngForm" class="form">
 
                     <div class="form-group row">
                         <label for="firstname" class="col-sm-3">First Name</label>
-                        <input required type="text" name="fname" id="" class="col-sm-8 form-control rounded-o" placeholder="" [(ngModel)]="registerUserdata.fname" aria-describedby="helpId">
+                        <input required type="text" name="fname" id="" class="col-sm-8 form-control rounded-o" placeholder="" aria-describedby="helpId" [(ngModel)]="registerUserdata.fname" #fnamecon="ngModel">
                     </div>
+
+
                     <div class="form-group row">
                         <label for="lastname" class="col-sm-3">Last Name</label>
                         <input [(ngModel)]="registerUserdata.lname" type="text" name="lname" required id="" class="col-sm-8 form-control rounded-o" placeholder="" aria-describedby="helpId">
@@ -21,20 +23,26 @@
                     </div>
                     <div class="form-group row ">
                         <label for="tittle " class="col-sm-3 ">Tittle </label>
-                        <input [(ngModel)]="registerUserdata.tittle " type="text " name="tittle " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <input required [(ngModel)]="registerUserdata.tittle " type="text " name="tittle " id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
                     <div class="form-group row ">
                         <label for="phone " class="col-sm-3 ">Phone </label>
-                        <input [(ngModel)]="registerUserdata.phone " type="text " name="phone " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <input [(ngModel)]="registerUserdata.phone " type="number" pattern="\d{10,11}(?!\d)|100" name="phone " #offPhone="ngModel" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
-
+                    <div *ngIf="offEmail.errors">
+                        <div *ngIf="offPhone.invalid">
+                            <p style="color:red"> Please enter a vaid number</p>
+                        </div>
+                    </div>
                     <div class="form-group row ">
                         <label for="email " class="col-sm-3 ">E-mail </label>
-                        <input [(ngModel)]="registerUserdata.email " type="email " name="email " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                        <input [(ngModel)]="registerUserdata.email " [pattern]="emailPattern" #offEmail="ngModel" type="email " name="email " required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
                     </div>
-                    <div class="form-group row ">
-                        <label for="password " class="col-sm-3 ">Password </label>
-                        <input type="password " name="password" required id=" " class="col-sm-8 form-control rounded-o " placeholder=" " aria-describedby="helpId ">
+                    <div *ngIf="offEmail.errors">
+
+                        <div *ngIf="offEmail.errors.pattern">
+                            <p style="color:red"> Official Email not valid.</p>
+                        </div>
                     </div>
                     <div class="form-group row ">
                         <label for="address1>" class="col-sm-3">Address </label>
@@ -48,11 +56,25 @@
                     <div class="form-group row">
                         <label class="col-sm-3" for="state">State</label>
 
-                        <select [(ngModel)]="registerUserdata.state" class="col-sm-8" id=" state ">
+                        <select [(ngModel)]="registerUserdata.state" (change)="valuestate($event.target.value)" class="col-sm-8" id=" state ">
                           <option value="Delhi ">Delhi</option>
-                          <option value="Hayanaa ">Haryana</option>
+                          <option value="Haryana ">Haryana</option>
                           <option value="Punjab ">Punjab</option>
-                          <option value="Up">U.P.</option>
+                          <option value="Uttar Pradesh">Uttar Pradesh</option>
+                          <option value="Moscow">Moscow</option>
+                          <option value="Saint Petersburg">Saint Petersburg</option>
+                          <option value=" Yekaterinburg">Yekaterinburg</option>
+                          <option value="California">California</option>
+                          <option value="Texas">Texas</option>
+                          <option value=" New York"> New York</option>
+                          <option value="Florida">Florida</option>
+                          <option value="Illinois"> Illinois</option>
+                          <option value="London"> London</option>
+                          <option value="Manchester"> Manchester</option>
+                          <option value="Hampshire"> Hampshire</option>
+                          <option value="Plymouth"> Plymouth</option>
+                          
+                        
                         </select>
 
                     </div>
@@ -63,15 +85,17 @@
                     <div class="form-group row ">
                         <label class="col-sm-3 " for="Country ">Country</label>
 
-                        <select class="col-sm-8 " id=" Country ">
-                          <option value="India ">India</option>
+                        <select (change)="valuecountry($event.target.value)" class="col-sm-8 " id=" Country ">
                           <option value="Russia ">Russia</option>
+                          <option value="India ">India</option>
                           <option value="U.S.A ">U.S.A</option>
                           <option value="UK ">U.k.</option>
                         </select> </div>
+                    <div *ngIf="registerForm.valid" class="row">
+                        <button (click)="registerUser() " type="submit " class="btn btn-primary col-md-8 float-center ">Submit</button>
 
+                    </div>
 
-                    <button (click)="registerUser() " type="submit " class="btn btn-primary col-md-8 float-center ">Submit</button>
 
                 </form>
 

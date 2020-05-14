@@ -19,12 +19,23 @@ export class RegisterComponent implements OnInit {
   address:"",
   city:"",
   state:"",
-  zip :""
+  zip :"",
+  country:""
 
  }
+ emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"; 
+ numberPattern="\d{10}";
   // constructor() { }
  constructor(private auth: AuthService, private router: Router){}
+ valuestate(value:any){
+  //  alert(value)
+  this.registerUserdata.state=value
 
+ }
+ valuecountry(value:any){
+  // alert(value)
+  this.registerUserdata.country=value;
+}
   registerUser()
   {
    

@@ -29,7 +29,8 @@ export class EditregisterComponent implements OnInit {
     address:"",
     city:"",
     state:"",
-    zip :""
+    zip :"",
+    country:""
   
    }
   
@@ -46,7 +47,8 @@ constructor(private route: ActivatedRoute, private router: Router, private auth:
   this.registerUserdata.address = this.route.snapshot.paramMap.get('address');
   this.registerUserdata.city = this.route.snapshot.paramMap.get('city');
   this.registerUserdata.zip = this.route.snapshot.paramMap.get('zip');
-
+  this.registerUserdata.state = this.route.snapshot.paramMap.get('state');
+  this.registerUserdata.country = this.route.snapshot.paramMap.get('country');
   
 
 

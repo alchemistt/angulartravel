@@ -1,4 +1,4 @@
-<div class="mt-5">
+<div class="mt-5 dashboard">
     <table class="table table-condensed">
         <thead>
             <tr>
@@ -16,7 +16,7 @@
 
         <tbody>
             <tr *ngFor="let req of data | paginate: { id: 'listing_pagination',
-            itemsPerPage: 4,
+            itemsPerPage: 2,
             currentPage: page,
             totalItems: totalRecords }">
                 <td>{{req.rid}}</td>
@@ -27,13 +27,22 @@
                 <td>{{req.travelStart| date :'long'}}</td>
                 <td>{{req.endDate | date : 'long'}} </td>
                 <td>{{req.additional}}</td>
+                <td>
+                    <button (click)="view(req.rid)" class="btn btn-success ">View</button>
+
+                </td>
+                <td>
+                    <button (click)="edit(req.rid)" class="btn btn-primary ">Edit</button>
+
+                </td>
+
 
 
         </tbody>
 
     </table>
     <div>
-        <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+        <pagination-controls id="listing_pagination" maxSize="1" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
     </div>
     <button type="submit " (click)="new()" class="btn btn-primary col-md-8 float-center ">New request</button>
 

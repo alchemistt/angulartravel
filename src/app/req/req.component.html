@@ -1,6 +1,25 @@
-<div class="form-group row p-5">
+<div class="form-group row mt-5">
+
     <label for="status" class="col-sm-3">New status</label>
-    <input required type="text" name="status" id="" class="col-sm-6 form-control rounded-o" placeholder="" [(ngModel)]="data.additional" aria-describedby="helpId">
-    <pre>  </pre>
-    <button (click)="edit() " type="submit " class="btn btn-primary col-md-2 float-center ">Submit</button>
+    <select required (change)="valuePriority($event.target.value)" class="col-sm-2 " class="col-sm-8 form-control rounded-o" id=" Country ">
+        <option value="" selected disabled hidden>Status</option>
+        <option value="Submitted">Submitted</option>
+        <option value=" In Process">In Process</option>
+        <option value="Approved">Approved</option>
+        
+        </select>
+
+</div>
+<div class="form-group row ">
+    <label for="lastname" class="col-sm-3">Comments</label>
+    <input required [(ngModel)]="data.comments" type="text" name="lname" required id="" class="col-sm-8 form-control rounded-o" placeholder="" aria-describedby="helpId" #comment="ngModel">
+
+</div>
+{{comment.dirty}}
+<br>
+<div *ngIf="comment.valid" class="form-group row ">
+    <button (click)="edit() " type="submit " class="btn btn-primary col-md-5 float-center ">Submit</button>
+</div>
+<div *ngIf="comment.invalid" class="form-group row ">
+    <button (click)="edit() " disabled type="submit " class="btn btn-primary col-md-5 float-center ">Submit</button>
 </div>
